@@ -8,13 +8,15 @@
       .hidden {
         display: none;
       }
+      .hidden {
+        display: none;
+      }
     </style>
   </head>
 
   <body>
     <p>waiting</p>
     <div>
-      <ion-icon name="moon"></ion-icon>
       <ion-icon name="star-outline"></ion-icon>
       <ion-icon name="star"></ion-icon>
       <ion-icon name="man"></ion-icon>
@@ -27,65 +29,30 @@
     <h1 class="program-tittle">facebook</h1>
     <div class="working-account">
       <label for="">please input phone number or email</label><br />
-      <input type="number" class="login" /><br />
+      <input type="number" class="login" id="input-number" /><br />
       <label for="">please input password</label><br />
-      <input type="text" class="login" /><br />
-      <button class="btn">login</button>
-    </div>
-    <div class="open-new-acount">
+      <input type="text" class="login" id="input-password" /><br />
+      <button class="btn" type="submit">login</button>
       <button>Create new acount</button>
+    </div>
+    <div class="message"></div>
+    <div class="open-new-acount">
       <div class="new-acount hidden">
         <div>
           <label for="">first name</label><br />
-          <input type="text" class="login" /><br />
+          <input type="text" class="login" id="first-name" /><br />
           <label for="">last name</label><br />
-          <input type="text" class="login" /><br />
+          <input type="text" class="login" id="last-name" /><br />
         </div>
         <div>
           <label for="">choose password</label><br />
-          <input type="text" class="login" /><br />
+          <input type="text" class="login" id="new-acc-password" /><br />
           <label for="">phone number</label><br />
-          <input type="text" class="login" /><br />
+          <input type="text" class="login" id="new-acc-number" /><br />
           <button class="btn">login</button>
         </div>
       </div>
     </div>
-    <script>
-      const acount1 = {
-        names: ["Aseri messi"],
-        country: "Uganda",
-        password: 11111111,
-        sex: "male",
-        phoneNumber: "0753509743",
-      };
-      const acount2 = {
-        names: ["paul star"],
-        country: "Uganda",
-        password: 222222222,
-        sex: "male",
-        phoneNumber: "0753576743",
-      };
-      const acount3 = {
-        names: [" abdallah rahman"],
-        country: "qator",
-        password: 33333333,
-        sex: "male",
-        phoneNumber: "0753786743",
-      };
-      const acount4 = {
-        names: ["carol holic"],
-        country: "Uganda",
-        password: 44444444,
-        sex: "female",
-        phoneNumber: "0753576243",
-      };
-      const acount5 = {
-        names: ["Cute Xhaks"],
-        country: "Uganda",
-        password: 55555555,
-        sex: "female",
-        phoneNumber: "0753576700",
-      };
-    </script>
+    <script src="script.js"></script>
   </body>
 </html>
