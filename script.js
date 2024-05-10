@@ -6,7 +6,7 @@ const createLogInBody = {
     GETFIRSTNAME: "first-name",
     GETLASTNAME: "last-name",
     GETPASSWORD: "new-acc-password",
-    GETNUMBER: "new-acc-numbe",
+    GETNUMBER: "new-acc-number",
   },
 };
 const inputNumber = document.getElementById(createLogInBody.GETNUM);
@@ -75,7 +75,6 @@ const checkCoditionsForOldAcount = (acc) => {
           ".message"
         ).textContent = `Hello and welcome mr/mrs ${ACOUNT.names.split(" ")[0]}
          but we are so xori cos the app is still under construction`;
-        console.log();
       }
     }, 4000);
   });
@@ -83,3 +82,27 @@ const checkCoditionsForOldAcount = (acc) => {
 document.querySelector(".btn").addEventListener("click", () => {
   checkCoditionsForOldAcount(acounts);
 });
+function addRemove() {
+  document.querySelector(".new-acount").classList.remove("hidden");
+  document.querySelector(".working-account").classList.add("hidden");
+}
+let acount6 = {};
+document.querySelector(".btn-new").addEventListener("click", addRemove);
+document.querySelector(".cul").addEventListener("click", () => {
+  if (
+    inputFirstName.value &&
+    inputLastName.value &&
+    inputNewAccPassword.value &&
+    inputNewAccNumber.value
+  ) {
+    let sir = inputFirstName.value;
+    let last = inputLastName.value;
+    let pass = inputNewAccPassword.value;
+    let number = inputNewAccNumber.value;
+    const name = [sir, last];
+    acount6 = { ...[name], password: pass, phoneNumber: number };
+    acounts.push(acount6);
+    console.log(acounts);
+  }
+});
+console.log(acount6);
