@@ -14,7 +14,7 @@ const inputPassword = document.getElementById(createLogInBody.GETPASSWORD);
 const inputFirstName = document.getElementById(
   createLogInBody.logInNewAcc.GETFIRSTNAME
 );
-const inputLastName = document.getElementById(
+const inputCountry = document.getElementById(
   createLogInBody.logInNewAcc.GETLASTNAME
 );
 const inputNewAccPassword = document.getElementById(
@@ -23,6 +23,16 @@ const inputNewAccPassword = document.getElementById(
 const inputNewAccNumber = document.getElementById(
   createLogInBody.logInNewAcc.GETNUMBER
 );
+const messageCap = document.querySelector(".message");
+const btnNewAcount = document.querySelector(".btn-new");
+const currentAccCell = document.querySelector(".working-account");
+const newAccCell = document.querySelector(".new-acount");
+const btnLogIntoAcc = document.querySelector(".btn-login");
+const btnBack = document.querySelector(".back");
+const btnLogIntoNewAcc = document.querySelector(".cul");
+const trues = document.querySelector(".true");
+
+/////////////////////////////////////////////////
 const acount1 = {
   names: "Aseri messi",
   country: "Uganda",
@@ -59,50 +69,82 @@ const acount5 = {
   phoneNumber: "0753576700",
 };
 const acounts = [acount1, acount2, acount3, acount4, acount5];
-const checkCoditionsForOldAcount = (acc) => {
-  acc.forEach((ACOUNT) => {
-    setTimeout(() => {
-      if (!inputNumber.value) {
-        document.querySelector(".message").textContent = "plez in put number";
-      } else if (!+inputPassword.value) {
-        document.querySelector(".message").textContent = "plez in put password";
-      } else if (
-        inputNumber.value === ACOUNT.phoneNumber &&
-        +inputPassword.value === ACOUNT.password
+////////////////
+btnLogIntoAcc.addEventListener("click", () => {
+  const curentAcountsCheck = (acc) => {
+    acc.forEach((curentAcount) => {
+      if (
+        inputNumber.value === curentAcount.phoneNumber &&
+        +inputPassword.value === curentAcount.password
       ) {
-        document.querySelector(".working-account").classList.add("hidden");
-        document.querySelector(
-          ".message"
-        ).textContent = `Hello and welcome mr/mrs ${ACOUNT.names.split(" ")[0]}
-         but we are so xori cos the app is still under construction`;
+        setTimeout(() => {
+          currentAccCell.classList.add("hidden");
+          messageCap.textContent = `Hello and welcome ${
+            curentAcount.names.split(" ")[0]
+          } `;
+        }, 2000);
+        messageCap.textContent = `please wait a moment `;
+      } else {
+        console.log("wrong");
       }
-    }, 4000);
-  });
-};
-document.querySelector(".btn").addEventListener("click", () => {
-  checkCoditionsForOldAcount(acounts);
+    });
+  };
+  curentAcountsCheck(acounts);
 });
-function addRemove() {
-  document.querySelector(".new-acount").classList.remove("hidden");
-  document.querySelector(".working-account").classList.add("hidden");
-}
+////////////////////////
+btnNewAcount.addEventListener("click", function () {
+  newAccCell.classList.remove("hidden");
+  currentAccCell.classList.add("hidden");
+});
+btnBack.addEventListener("click", () => {
+  newAccCell.classList.add("hidden");
+  currentAccCell.classList.remove("hidden");
+});
+
+///////////
 let acount6 = {};
-document.querySelector(".btn-new").addEventListener("click", addRemove);
-document.querySelector(".cul").addEventListener("click", () => {
+btnLogIntoNewAcc.addEventListener("click", () => {
   if (
     inputFirstName.value &&
-    inputLastName.value &&
+    inputCountry.value &&
     inputNewAccPassword.value &&
     inputNewAccNumber.value
   ) {
     let sir = inputFirstName.value;
-    let last = inputLastName.value;
+    let cou = inputCountry.value;
     let pass = inputNewAccPassword.value;
     let number = inputNewAccNumber.value;
-    const name = [sir, last];
-    acount6 = { ...[name], password: pass, phoneNumber: number };
+    acount6.names = sir;
+    acount6.country = cou;
+    acount6.password = pass;
+    acount6.phoneNumber = number;
+    newAccCell.classList.add("hidden");
+    messageCap.textContent = `Hello and welcome ${
+      acount6.names.split(" ")[0]
+    } `;
     acounts.push(acount6);
-    console.log(acounts);
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    const curentAcountsCheckNew = (acc) => {
+      if (
+        inputNumber.value === acc.phoneNumber &&
+        +inputPassword.value === acc.password
+      ) {
+        setTimeout(() => {
+          newAccCell.classList.add("hidden");
+          messageCap.textContent = `Hello and welcome ${
+            acc.names.split(" ")[0]
+          } `;
+        }, 2000);
+        messageCap.textContent = `please wait a moment `;
+      } else {
+        console.log("wrong");
+      }
+    };
+    curentAcountsCheckNew(acount6);
+    console.log(acount6);
   }
 });
-console.log(acount6);
+trues.addEventListener("click", function () {
+  messageCap.classList.add("hidden");
+  newAccCell.classList.remove("hidden");
+});
