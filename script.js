@@ -33,118 +33,152 @@ const btnLogIntoNewAcc = document.querySelector(".cul");
 const trues = document.querySelector(".true");
 
 /////////////////////////////////////////////////
-const acount1 = {
-  names: "Aseri messi",
-  country: "Uganda",
-  password: 11111111,
-  sex: "male",
-  phoneNumber: "0753509743",
-};
-const acount2 = {
-  names: "paul star",
-  country: "Uganda",
-  password: 222222222,
-  sex: "male",
-  phoneNumber: "0753576743",
-};
-const acount3 = {
-  names: "abdallah rahman",
-  country: "qator",
-  password: 33333333,
-  sex: "male",
-  phoneNumber: "0753786743",
-};
-const acount4 = {
-  names: "carol holic",
-  country: "Uganda",
-  password: 44444444,
-  sex: "female",
-  phoneNumber: "0753576243",
-};
-const acount5 = {
-  names: "Cute Xhaks",
-  country: "Uganda",
-  password: 55555555,
-  sex: "female",
-  phoneNumber: "0753576700",
-};
-const acounts = [acount1, acount2, acount3, acount4, acount5];
-////////////////
-btnLogIntoAcc.addEventListener("click", () => {
-  const curentAcountsCheck = (acc) => {
-    acc.forEach((curentAcount) => {
-      if (
-        inputNumber.value === curentAcount.phoneNumber &&
-        +inputPassword.value === curentAcount.password
-      ) {
-        setTimeout(() => {
-          currentAccCell.classList.add("hidden");
-          messageCap.textContent = `Hello and welcome ${
-            curentAcount.names.split(" ")[0]
-          } `;
-        }, 2000);
-        messageCap.textContent = `please wait a moment `;
+
+class LoginForm {
+  constructor(names, country, sex, phoneNumber, password) {
+    this.names = names;
+    this.country = country;
+    this.sex = sex;
+    this.phoneNumber = phoneNumber;
+    this.password = password;
+    this.login();
+  }
+
+  login() {
+    let pass = this.password;
+    let phoneNum = this.phoneNumber;
+    btnLogIntoAcc.addEventListener("click", function () {
+      if (pass === +inputPassword.value && phoneNum === +inputNumber.value) {
+        console.log("yes it is!!!");
+        inputPassword.value = "";
+        inputNumber.value = "";
       } else {
-        console.log("wrong");
+        alert("invalid inputs");
       }
     });
-  };
-  curentAcountsCheck(acounts);
-});
-////////////////////////
-btnNewAcount.addEventListener("click", function () {
-  newAccCell.classList.remove("hidden");
-  currentAccCell.classList.add("hidden");
-});
-btnBack.addEventListener("click", () => {
-  newAccCell.classList.add("hidden");
-  currentAccCell.classList.remove("hidden");
-});
-
-///////////
-let acount6 = {};
-btnLogIntoNewAcc.addEventListener("click", () => {
-  if (
-    inputFirstName.value &&
-    inputCountry.value &&
-    inputNewAccPassword.value &&
-    inputNewAccNumber.value
-  ) {
-    let sir = inputFirstName.value;
-    let cou = inputCountry.value;
-    let pass = inputNewAccPassword.value;
-    let number = inputNewAccNumber.value;
-    acount6.names = sir;
-    acount6.country = cou;
-    acount6.password = pass;
-    acount6.phoneNumber = number;
-    newAccCell.classList.add("hidden");
-    messageCap.textContent = `Hello and welcome ${
-      acount6.names.split(" ")[0]
-    } `;
-    acounts.push(acount6);
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    const curentAcountsCheckNew = (acc) => {
-      if (
-        inputNumber.value === acc.phoneNumber &&
-        +inputPassword.value === acc.password
-      ) {
-        setTimeout(() => {
-          newAccCell.classList.add("hidden");
-          messageCap.textContent = `Hello and welcome ${
-            acc.names.split(" ")[0]
-          } `;
-        }, 2000);
-        messageCap.textContent = `please wait a moment `;
-      } else {
-        console.log("wrong");
-      }
-    };
-    curentAcountsCheckNew(acount6);
-    console.log(acount6);
   }
-});
-trues.addEventListener("click", function () {
-  messageCap.classList.add("hidden");
-  newAccCell.classList.remove("hidden");
-});
+}
+
+const acc1 = new LoginForm("aseri", "uganda", "male", 1234, 1111);
+const acc2 = new LoginForm("aseri", "uganda", "male", 256, 2222);
+const acc3 = new LoginForm("aseri", "uganda", "male", 742, 3333);
+// const acc2 = new LoginForm("codes", "jamaica", "male", 1234, 2222);
+// acc1.login();
+// btnLogIntoAcc.addEventListener("click", acc1.login());
+//////////////////////////////////////////////////////////
+// OLD WAY OF DOING IT
+// const acount1 = {
+//   names: "Aseri messi",
+//   country: "Uganda",
+//   password: 11111111,
+//   sex: "male",
+//   phoneNumber: "0753509743",
+// };
+// const acount2 = {
+//   names: "paul star",
+//   country: "Uganda",
+//   password: 222222222,
+//   sex: "male",
+//   phoneNumber: "0753576743",
+// };
+// const acount3 = {
+//   names: "abdallah rahman",
+//   country: "qator",
+//   password: 33333333,
+//   sex: "male",
+//   phoneNumber: "0753786743",
+// };
+// const acount4 = {
+//   names: "carol holic",
+//   country: "Uganda",
+//   password: 44444444,
+//   sex: "female",
+//   phoneNumber: "0753576243",
+// };
+// const acount5 = {
+//   names: "Cute Xhaks",
+//   country: "Uganda",
+//   password: 55555555,
+//   sex: "female",
+//   phoneNumber: "0753576700",
+// };
+// const acounts = [acount1, acount2, acount3, acount4, acount5];
+// ////////////////
+// btnLogIntoAcc.addEventListener("click", () => {
+//   const curentAcountsCheck = (acc) => {
+//     acc.forEach((curentAcount) => {
+//       if (
+//         inputNumber.value === curentAcount.phoneNumber &&
+//         +inputPassword.value === curentAcount.password
+//       ) {
+//         setTimeout(() => {
+//           currentAccCell.classList.add("hidden");
+//           messageCap.textContent = `Hello and welcome ${
+//             curentAcount.names.split(" ")[0]
+//           } `;
+//         }, 2000);
+//         messageCap.textContent = `please wait a moment `;
+//       } else {
+//         console.log("wrong");
+//       }
+//     });
+//   };
+//   curentAcountsCheck(acounts);
+// });
+// ////////////////////////
+// btnNewAcount.addEventListener("click", function () {
+//   newAccCell.classList.remove("hidden");
+//   currentAccCell.classList.add("hidden");
+// });
+// btnBack.addEventListener("click", () => {
+//   newAccCell.classList.add("hidden");
+//   currentAccCell.classList.remove("hidden");
+// });
+
+// ///////////
+// let acount6 = {};
+// btnLogIntoNewAcc.addEventListener("click", () => {
+//   if (
+//     inputFirstName.value &&
+//     inputCountry.value &&
+//     inputNewAccPassword.value &&
+//     inputNewAccNumber.value
+//   ) {
+//     let sir = inputFirstName.value;
+//     let cou = inputCountry.value;
+//     let pass = inputNewAccPassword.value;
+//     let number = inputNewAccNumber.value;
+//     acount6.names = sir;
+//     acount6.country = cou;
+//     acount6.password = pass;
+//     acount6.phoneNumber = number;
+//     newAccCell.classList.add("hidden");
+//     messageCap.textContent = `Hello and welcome ${
+//       acount6.names.split(" ")[0]
+//     } `;
+//     acounts.push(acount6);
+//     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//     const curentAcountsCheckNew = (acc) => {
+//       if (
+//         inputNumber.value === acc.phoneNumber &&
+//         +inputPassword.value === acc.password
+//       ) {
+//         setTimeout(() => {
+//           newAccCell.classList.add("hidden");
+//           messageCap.textContent = `Hello and welcome ${
+//             acc.names.split(" ")[0]
+//           } `;
+//         }, 2000);
+//         messageCap.textContent = `please wait a moment `;
+//       } else {
+//         console.log("wrong");
+//       }
+//     };
+//     curentAcountsCheckNew(acount6);
+//     console.log(acount6);
+//   }
+// });
+// trues.addEventListener("click", function () {
+//   messageCap.classList.add("hidden");
+//   newAccCell.classList.remove("hidden");
+// });
