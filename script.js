@@ -31,7 +31,8 @@ const btnLogIntoAcc = document.querySelector(".btn-login");
 const btnBack = document.querySelector(".back");
 const btnLogIntoNewAcc = document.querySelector(".cul");
 const trues = document.querySelector(".true");
-
+let inputPA = +inputPassword.value;
+let inputPH = +inputNumber.value;
 /////////////////////////////////////////////////
 
 class LoginForm {
@@ -45,23 +46,22 @@ class LoginForm {
   }
 
   login() {
-    let pass = this.password;
-    let phoneNum = this.phoneNumber;
+    let pass = this.password + "";
+    let phoneNum = this.phoneNumber + "";
     btnLogIntoAcc.addEventListener("click", function () {
-      if (pass === +inputPassword.value && phoneNum === +inputNumber.value) {
-        console.log("yes it is!!!");
+      if (pass === inputPassword.value && phoneNum === inputNumber.value) {
+        alert("YOU HAVE DONE IT COOL!!!!");
         inputPassword.value = "";
         inputNumber.value = "";
-      } else {
-        alert("invalid inputs");
       }
+      if (pass !== inputPassword.value) console.log("wrong password");
+      if (phoneNum !== inputNumber.value) console.log("wrong number");
     });
   }
 }
-
-const acc1 = new LoginForm("aseri", "uganda", "male", 1234, 1111);
-const acc2 = new LoginForm("aseri", "uganda", "male", 256, 2222);
-const acc3 = new LoginForm("aseri", "uganda", "male", 742, 3333);
+const acc1 = new LoginForm("aseri", "uganda", "male", 1111222233, 11111111);
+// const acc2 = new LoginForm("aseri", "uganda", "male", 2222333344, 22222222);
+// const acc3 = new LoginForm("aseri", "uganda", "male", 742, 33333333);
 // const acc2 = new LoginForm("codes", "jamaica", "male", 1234, 2222);
 // acc1.login();
 // btnLogIntoAcc.addEventListener("click", acc1.login());
